@@ -6,7 +6,7 @@ public class CharMove : MonoBehaviour
 {
 
     Rigidbody rb;
-    float speed = 5f;
+    float speed = 8f;
 
     bool IsLookingLeft = true;
     bool isGrounded;
@@ -57,9 +57,9 @@ public class CharMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (IsGrounded() && Input.GetButtonDown("Fire1"))
+        if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(transform.up * 5f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 11f, ForceMode.Impulse);
             anim.SetBool("jump", true);
         }
     }
@@ -69,7 +69,7 @@ public class CharMove : MonoBehaviour
         Ray ray = new Ray(transform.position, -transform.up);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 0.6f))
+        if (Physics.Raycast(ray, out hit, 0.5f))
         {
             if (hit.collider.CompareTag("Ground"))
             {
