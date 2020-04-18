@@ -9,8 +9,7 @@ public class CharMove : MonoBehaviour
     float speed = 5f;
 
     bool IsLookingLeft = true;
-
-    //bool IsGrounded;
+    bool isGrounded;
 
     Animator anim;
 
@@ -43,7 +42,7 @@ public class CharMove : MonoBehaviour
             transform.Rotate(Vector3.up, 180);
         }
 
-        if(hori != 0 || vert != 0)
+        if((hori != 0 || vert != 0) && isGrounded)
         {
             anim.SetBool("walk", true);
         }
@@ -56,11 +55,11 @@ public class CharMove : MonoBehaviour
         //rb.AddForce(move * speed);
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        if (Input.GetButtonDown("Fire1") && IsGrounded())
+        if (IsGrounded() && Input.GetButtonDown("Fire1"))
         {
-            rb.AddForce(0, 8f, 0, ForceMode.Impulse);
+            rb.AddForce(transform.up * 5f, ForceMode.Impulse);
             anim.SetBool("jump", true);
         }
     }
@@ -74,11 +73,11 @@ public class CharMove : MonoBehaviour
         {
             if (hit.collider.CompareTag("Ground"))
             {
-                IsGrounded = true;
+                isGrounded = true;
                 return true;
             }
         }
-        IsGrounded = false;
+        isGrounded = false;
         return false;
     }
 
@@ -86,7 +85,7 @@ public class CharMove : MonoBehaviour
     {
         if (col.collider.CompareTag("Ground"))
         {
-            IsGrounded = true;
+            isGrounded = true;
             anim.SetBool("jump", false);
         }
     }
