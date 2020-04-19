@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     static GameManager manager;
-    public GameObject player;
+    [SerializeField]
     public static int levelIndex;
-    public Text CountDown;
 
     /*void Start()
     {
@@ -35,7 +34,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    IEnumerator Countdown(int seconds)
+    /*IEnumerator Countdown(int seconds)
     {
         int count = seconds;
 
@@ -50,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         // Count down is finished...
        // StartGame();
-    }
+    }*/
 
     /*void StartGame()
     {

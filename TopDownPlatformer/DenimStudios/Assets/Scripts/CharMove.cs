@@ -27,8 +27,6 @@ public class CharMove : MonoBehaviour
         float hori = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
 
-        Debug.Log(hori);
-
         Vector3 move = new Vector3(hori, 0, vert);
 
         if(hori < 0 && !IsLookingLeft)
