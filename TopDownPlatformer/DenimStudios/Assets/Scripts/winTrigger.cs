@@ -13,7 +13,7 @@ public class winTrigger : MonoBehaviour
         if (win.gameObject.tag == "Player")
         {
             player.GetComponent<CharMove>().enabled = false;
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             Debug.Log("You Win!");
         }
     }

@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
 
     public Text nameText;
     public Text dialogueText;
+    public GameObject player;
 
     public Animator animator;
 
@@ -35,7 +36,15 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            
+            print("space key was pressed");
+            DisplayNextSentence();
+        }
+    }
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -62,5 +71,6 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         animator.SetBool("IsOpen", false);
+        player.GetComponent<CharMove>().enabled = true;
     }
 }
