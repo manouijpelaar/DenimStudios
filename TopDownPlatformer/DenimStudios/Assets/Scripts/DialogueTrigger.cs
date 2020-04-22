@@ -9,7 +9,7 @@ public class DialogueTrigger : MonoBehaviour
     public GameObject platform;
     private void Start()
     {
-        platform.GetComponent<MeshCollider>().isTrigger = true;
+        platform.GetComponent<BoxCollider>().isTrigger = true;
         player.GetComponent<CharMove>().enabled = true;
     }
 
@@ -19,7 +19,7 @@ public class DialogueTrigger : MonoBehaviour
         if (texttrigger.gameObject.tag == "Player")
         {
             player.GetComponent<CharMove>().enabled = false;
-            platform.GetComponent<MeshCollider>().isTrigger = false;
+            platform.GetComponent<BoxCollider>().isTrigger = false;
             FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
             Debug.Log("starting conversation");
         }
